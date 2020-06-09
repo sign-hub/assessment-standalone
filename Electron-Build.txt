@@ -6,7 +6,7 @@ Step 1.
 	npm install -g  electron-packager
 
 Step 2.
-	Than run npm install.
+	Run npm install.
 
 Step 3.
 	Modify index.html
@@ -22,16 +22,12 @@ Step 3.
 Step 4.
 	ng build
 
-Build For Electron Package.
+Either package with Electron Package
 	Step 4.1
-		electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=win32 --out ./electron-app --overwrite
-
-electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=win32 --out ../testplayer_build/electron-app-win --overwrite
-electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=linux --out ../testplayer_build/electron-app-linux --overwrite
-electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=win32 --out /data/eclettica/work/cini/sources/testplayer_build/electron-app-win --overwrite
-
-Run on Electron.
-	Step 4.1
+		electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=win32 --out ./electron-app-win --overwrite
+		electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=linux --out ./electron-app-linux --overwrite
+Or run on Electron
+	Step 4.2
 		electron .  --inspect main.js --enable-logging
 
 
