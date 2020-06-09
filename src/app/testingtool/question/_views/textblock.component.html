@@ -1,0 +1,29 @@
+<div class="input-upload">
+    <form #nForm="ngForm">
+        <div class="input-title">
+            Text block configuration
+        </div>
+        <div class="input-body">
+            <md-input-container class="p-full-width">
+                <textarea [froalaEditor]='froalaoptions' mdInput placeholder="Text" name="text" [(froalaModel)]="input.text" id="text"> </textarea>
+            </md-input-container>
+            <!--<md-input-container class="p-full-width">
+                <input mdInput type="number" placeholder="Dimension" name="dimension" 
+                [(ngModel)]="input.options.fsize" id="dimension" value="{{input.options.fsize}}">
+            </md-input-container>
+            <input [(colorPicker)]="color" [style.background]="color" 
+            (colorPickerChange)="selectColor(color)"/> -->           
+        </div>
+        <div class="input-footer">
+            <button md-button color="primary" (click)="save()"><i class="material-icons">&#xE161;</i> Save</button>
+            <button md-button color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> Cancel</button>
+        </div>
+        <!--<ckeditor
+        [(ngModel)]="ckeditorContent" name="ckeditorContent"
+        [config]="{uiColor: '#99000', removeButtons : 'Underline,JustifyCenter'}"
+        [readonly]="false"
+        debounce="500">
+      </ckeditor>-->
+      
+    </form>
+</div>

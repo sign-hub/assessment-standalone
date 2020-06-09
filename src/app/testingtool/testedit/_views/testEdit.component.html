@@ -1,0 +1,57 @@
+<div class="main-container" [ngStyle]="{'min-height': wHeight}">
+  <div class="e-card">
+    <md-card>
+      <div class="e-loading" *ngIf="isLoading">
+        Loading...
+        <md-progress-bar mode="indeterminate"></md-progress-bar>
+      </div>
+      <div *ngIf="!isLoading">
+        <div class="card-title">
+          {{test.TestName}}
+          <div class="pull-right test-action">
+            <i class="material-icons test-action-edit" [ngClass]="{active : sortChanged}"  (click)="saveQuestionOrder()">&#xE2BF;</i>
+            <i class="material-icons test-action-edit" (click)="openDialogEditTest()">&#xE22B;</i>
+            <i class="material-icons" (click)="openTestPreview()">&#xE417;</i>
+            <i class="material-icons" (click)="openTestView()">&#xE039;</i>
+          </div>
+        </div>
+        <div class="pro-test">
+          <div class="row">
+            <div class="col-md-4">
+              <div>State: {{test.state}}</div>
+              <div> Date: {{date}}</div>
+            </div>
+            <div class="col-md-8">
+              <div *ngFor="let o of options;">
+                {{o}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <md-card-content>
+          <div class="container-question e-content" dnd-sortable-container [sortableData]="test.questions">
+            <div class="card-question card-question-new" (click)="newQuestion()" [ngClass]="{'card-disabled': questionLoading}">
+              <div class="text-card-question">
+                <i *ngIf="questionLoading" class="fa fa-circle-o-notch fa-spin"></i>
+                <img *ngIf="!questionLoading" src="assets/img/new-question-icon.PNG" alt="question" style="padding-bottom: 10px"> <br/>
+                NEW <br/> QUESTTION
+              </div>
+            </div>
+            <div class="card-question card-question-info" (dragstart)="draggedStart(i)" (onDropSuccess)="draggedSuccess(i)" *ngFor="let t of test.questions; let i = index" dnd-sortable [sortableIndex]="i">
+              <div class="card-question-action">
+                <i class="material-icons">&#xE8B6;</i>
+                <i class="material-icons" (click)="configQuestion(t)">&#xE8B8;</i>
+                <i class="material-icons" (click)="editQuestion(t)">&#xE22B;</i>
+                <i class="material-icons" (click)="deleteQuestion(t)">&#xE872;</i>
+              </div>
+              <div class="text-card-question">
+                {{t.name}}
+              </div>
+            </div>
+          </div>
+        </md-card-content>
+      </div>
+    </md-card>
+  </div>
+</div>
+

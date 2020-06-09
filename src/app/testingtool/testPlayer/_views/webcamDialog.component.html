@@ -1,0 +1,53 @@
+<div class="row" *ngIf="!videoBoolean">
+  <div class="col-xs-12">
+    <h4>Click 'Record' to start recording</h4>
+  </div>
+</div>
+<div class="row" *ngIf="videoBoolean">
+  <div class="col-xs-12">
+    <h4 class="webcam-error">Click 'Upload' to upload video or 'Cancel' to quit</h4>
+  </div>
+</div>
+<div class="row" *ngIf="!videoBoolean">
+  <div class="col-xs-12">
+    <vg-player>
+      <video [vgMedia]="video" #video class="video" controls="false"></video>
+    </vg-player>
+  </div>
+</div>
+<div class="row" *ngIf="videoBoolean">
+  <div class="col-xs-12">
+    <vg-player>
+      <video [vgMedia]="videoPlayer" #videoPlayer class="video" controls></video>
+    </vg-player>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button *ngIf="!isRecording" md-button color="warn" (click)="startRecording()">
+      <i class="material-icons">
+        fiber_manual_record
+      </i>
+      Record
+    </button>
+    <button *ngIf="isRecording && !isStopped" md-button color="warn" (click)="stopRecording()">
+      <i class="material-icons">
+        stop
+      </i>
+      Stop
+    </button>
+    <button *ngIf="isStopped" [disabled]="isLoading" md-button color="accent" (click)="uploadNew()">
+      <i *ngIf="!isLoading" class="material-icons">
+        cloud_upload
+      </i>
+      <i *ngIf="isLoading" class="fa fa-circle-o-notch fa-spin"></i>
+      Save
+    </button>
+    <button *ngIf="isStopped" md-button (click)="stopRecording()" [md-dialog-close]="true">
+      <i class="material-icons">
+        cancel
+      </i>
+      Cancel
+    </button>
+  </div>
+</div>

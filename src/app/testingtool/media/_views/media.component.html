@@ -1,0 +1,172 @@
+<div class="main-container" [ngStyle]="{'min-height': wHeight}">
+  <div class="e-card">
+    <md-card>
+      <div class="card-title">
+        Media
+      </div>
+      <md-card-content>
+        <md-tab-group (selectChange)="changeTab($event.index)">
+          <md-tab>
+            <ng-template md-tab-label>
+              <i class="material-icons m-material-icons">&#xE04A;</i> <span>Video </span>
+            </ng-template>
+            <div class="e-content" [ngStyle]="{'height' : heightMedia}">
+              <div class="m-action">
+                <div class="btn-acion">
+                  <button md-button (click)="openUpload()" class="btn-add-photo"><i class="material-icons">&#xE39D;</i> Add video</button>
+                </div>
+                <md-input-container>
+                  <input mdInput placeholder="File name">
+                </md-input-container>
+                <md-input-container>
+                  <input mdInput placeholder="Author">
+                </md-input-container>
+                <md-input-container>
+                  <input mdInput [mdDatepicker]="picker" placeholder="Date">
+                  <button mdSuffix md-datepicker-toggle="picker"></button>
+                </md-input-container>
+                <md-datepicker #picker></md-datepicker>
+                <button md-button class="m-btn-filter"><i class="material-icons m-icon-filter">&#xE152;</i></button>
+              </div>
+              <div class="m-body">
+                <div *ngIf="isLoading">
+                  <md-progress-bar class="app-progress" mode="indeterminate"></md-progress-bar>
+                </div>
+                <div  *ngIf="gridView">
+                  <div class="col-md-3" style="padding: 0px;" *ngFor="let p of photos; let i = index">
+                    <div class="m-image">
+                      <img [urlApi]="p.mediaThumbPath" alt="{{p.mediaName}}" width="100%" />
+                      <div class="m-image-footer">
+                        <div class="m-text">
+                          <div class="m-file-name">
+                            {{p.mediaName}}
+                          </div>
+                          <div class="m-size">
+                            {{p.size}}
+                          </div>
+                        </div>
+                        <div class="m-icon icon-position">
+                          <i class="material-icons" (click)="openPreview(p)">&#xE8B6;</i>
+                          <i class="material-icons" (click)="delMedia(p)">&#xE872;</i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <md-list *ngIf="listView">
+                  <md-list-item  *ngFor="let m of photos; let i = index" style="height: 160px;"> 
+                    <div class="pull-left" class="list-left"> 
+                      <img [urlApi]="m.mediaThumbPath" class="image-media" alt="{{m.mediaName}}" width="60%"/>
+                    </div>
+                    <div class="pull-right" class="list-center">
+                      <span>{{m.mediaName}}</span>
+                    </div>
+                    <div class="m-icon list-right">
+                      <div class="pull-right">
+                        <i class="material-icons" (click)="openPreview(m)">&#xE8B6;</i>
+                        <i class="material-icons" (click)="delMedia(m)">&#xE872;</i>
+                      </div>
+                      </div>
+                  </md-list-item>
+                </md-list>
+              </div>
+            </div>
+          </md-tab>
+          <md-tab>
+            <ng-template md-tab-label>
+              <i class="material-icons m-material-icons">&#xE413;</i> <span>Photo </span>
+            </ng-template>
+            <div class="e-content" [ngStyle]="{'height' : heightMedia}">
+              <div class="m-action">
+                <div class="btn-acion">
+                  <button md-button (click)="openUpload()" class="btn-add-photo"><i class="material-icons">&#xE39D;</i> Add photo</button>
+                </div>
+                <md-input-container>
+                  <input mdInput placeholder="File name" name="mediaName" [(ngModel)]="filter.mediaName" #mediaName="ngModel" id="mediaName">
+                </md-input-container>
+                <md-input-container>
+                  <input mdInput placeholder="Author" name="mediaAuthor" [(ngModel)]="filter.mediaAuthor" #mediaAuthor="ngModel" id="mediaAuthor">
+                </md-input-container>
+                <md-input-container>
+                  <input mdInput [mdDatepicker]="pickerVideo" placeholder="Date" name="mediaDate" [(ngModel)]="filter.mediaDate" #mediaDate="ngModel" id="mediaDate">
+                  <button mdSuffix md-datepicker-toggle="pickerVideo"></button>
+                </md-input-container>
+                <md-datepicker #pickerVideo></md-datepicker>
+                <button md-button class="m-btn-filter" (click)="doFilter()"><i class="material-icons m-icon-filter">&#xE152;</i></button>
+              </div>
+              <div class="m-body">
+                <div *ngIf="isLoading">
+                  <md-progress-bar class="app-progress" mode="indeterminate"></md-progress-bar>
+                </div>
+                <div  *ngIf="gridView">
+                <div class="col-md-3" style="padding: 0px;" *ngFor="let p of photos; let i = index">
+                  <div class="m-image">
+                    <img [urlApi]="p.mediaThumbPath" alt="{{p.mediaName}}" width="100%" />
+                    <div class="m-image-footer">
+                      <div class="m-text">
+                        <div class="m-file-name">
+                          {{p.mediaName}}
+                        </div>
+                        <div class="m-size">
+                          {{p.size}}
+                        </div>
+                      </div>
+                      <div class="m-icon icon-position">
+                        <i class="material-icons" (click)="openPreview(p)">&#xE8B6;</i>
+                        <i class="material-icons" (click)="delMedia(p)">&#xE872;</i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+
+                <md-list *ngIf="listView">
+                  <md-list-item  *ngFor="let m of photos; let i = index" style="height: 160px;"> 
+                    <div class="pull-left" class="list-left"> 
+                      <img [urlApi]="m.mediaThumbPath" class="image-media" alt="{{m.mediaName}}" width="60%"/>
+                    </div>
+                    <div class="pull-right" class="list-center">
+                      <span>{{m.mediaName}}</span>
+                    </div>
+                    <div class="m-icon list-right">
+                      <div class="pull-right">
+                        <i class="material-icons" (click)="openPreview(m)">&#xE8B6;</i>
+                        <i class="material-icons" (click)="delMedia(m)">&#xE872;</i>
+                      </div>
+                    </div>
+                  </md-list-item>
+                </md-list>
+
+              </div>
+            </div>
+          </md-tab>
+          <!--<md-tab>
+            <ng-template md-tab-label>
+              <i class="material-icons m-material-icons">&#xE030;</i> <span>Audio </span>
+            </ng-template>
+            <div class="e-content" [ngStyle]="{'height' : heightMedia}">Audio
+            </div>
+          </md-tab>-->
+          <md-tab>
+            <ng-template md-tab-label>
+              <i class="material-icons m-material-icons">&#xE02F;</i> <span>Text </span>
+            </ng-template>
+            <div class="e-content" [ngStyle]="{'height' : heightMedia}">Text
+            </div>
+          </md-tab>
+          <md-tab>
+            <ng-template md-tab-label>
+              <i class="material-icons m-material-icons">&#xE03C;</i> <span>Test </span>
+            </ng-template>
+            <div class="e-content" [ngStyle]="{'height' : heightMedia}">Test
+            </div>
+          </md-tab>
+        </md-tab-group>
+        <div style="position:absolute;right:4%;top:35px;z-index: 999999;">
+          <a href="javascript:void(0)"><i class="material-icons" (click)="setListView()">list</i></a>
+          <a href="javascript:void(0)"><i class="material-icons" (click)="setGridView()">apps</i></a>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

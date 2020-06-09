@@ -1,0 +1,35 @@
+<div class="input-upload">
+    <form #nForm="ngForm">
+        <div class="input-title">
+            Radio configuration
+        </div>
+        <div class="input-body">
+            <md-input-container class="p-full-width">
+                <input mdInput placeholder="Group name" name="groupName" [(ngModel)]="input.groupName" #groupName="ngModel" id="groupName" required>
+            </md-input-container>
+            <div class="p-full-width">
+                <div *ngFor="let r of input.radioComponent">
+                    <span>
+                            {{r.label}} {{r.value}} {{r.isCorrect}}
+                    </span><button md-button color="primary" (click)="deleteRadio(r)"><i class="material-icons">&#xE872;</i> Remove</button>
+                </div>
+                <button md-button color="primary" (click)="addRadio=true">Add</button>
+            </div>
+            <div class="p-full-width addRadio" *ngIf="addRadio">
+                <md-input-container class="p-full-width">
+                    <input mdInput placeholder="Label" name="lab" [(ngModel)]="new.label" #name="ngModel" id="newlabel">
+                </md-input-container>
+                <md-input-container class="p-full-width">
+                    <input mdInput type="number" placeholder="Value" name="value" [(ngModel)]="new.value" #name="ngModel" id="newval">
+                </md-input-container>
+                <md-checkbox [checked]="new.isCorrect" (change)="changeIsCorrect()" name="isCorrect">Is Correct</md-checkbox>                
+                <button md-button color="primary" (click)="addNewRadio()">Add</button>
+            </div>
+            <md-checkbox [checked]="input.transition" (change)="changeTransition()" name="transition">Transition</md-checkbox>
+        </div>
+        <div class="input-footer">
+            <button md-button color="primary" (click)="save()"><i class="material-icons">&#xE161;</i> Save</button>
+            <button md-button color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> Cancel</button>
+        </div>
+    </form>
+</div>

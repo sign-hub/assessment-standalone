@@ -1,0 +1,46 @@
+@import "../../../share/theme.scss";
+
+/deep/.mat-dialog-container {
+    padding: 0px !important;
+    border-radius: 0px;
+}
+
+.del-title {
+    padding: 2px 5px 2px 5px;
+    background-color: #ff8181;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+.del-text {
+    text-align: center;
+    color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.m-select {
+    font-weight: 450;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.del-container {
+    width: 450px;
+    color: #ffffff;
+    background-color: #ff0000;
+}
+
+.del-action {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.del-button {
+    line-height: 20px;
+    color: #ffffff !important;
+    &:hover {
+        background-color: #fff;
+        color: #ff0000!important;
+    }
+}

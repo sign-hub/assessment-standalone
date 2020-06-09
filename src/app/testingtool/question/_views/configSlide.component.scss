@@ -1,0 +1,63 @@
+@import "../../../share/theme.scss";
+
+/deep/ .mat-dialog-container {
+  padding: 0px !important;
+  border-radius: 0px;
+}
+
+.config-slide-container {
+  width: 450px;
+}
+
+.config-slide-title {
+  padding: 2px 5px 2px 5px;
+  background-color: $bg-card-title;
+  font-weight: bold;
+  color: $color-card-title;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+.config-slide-body {
+  padding: 30px;
+}
+
+.lb-slide {
+  font-size: 12px;
+  color: #7a7a52;
+  font-weight: bold;
+}
+
+.input-time-control {
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 30px;
+  margin-top: 2px;
+  color: $color-primary;
+}
+
+.input-time {
+  width: 25px;
+  height: 20px;
+  background-color: $color-primary;
+  color: #ffffff;
+  border: 0px;
+}
+
+.btn-test {
+  line-height: 20px;
+  color: #8c8c8c;
+  font-weight: normal;
+  &:hover {
+    color: #ffffff;
+    background-color: $color-primary;
+  }
+}
+
+.btn-test /deep/.mat-button-wrapper {
+  font-weight: normal !important;
+}
+
+.slide-footer {
+  padding-bottom: 5px;
+  text-align: center;
+}

@@ -1,0 +1,90 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item active">Profile</li>
+</ol>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12" *ngIf="loading">
+      <md-progress-bar class="app-progress" mode="indeterminate"></md-progress-bar>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <md-card>
+        <md-card-title-group>
+          <md-card-title>{{profileInfo.name}}</md-card-title>
+          <md-card-subtitle>{{profileInfo.email}}</md-card-subtitle>
+          <img md-card-md-image src="assets/img/unknown_user.png">
+        </md-card-title-group>
+        <md-card-content>
+          <md-input-container class="p-full-width">
+            <input mdInput placeholder="Registrantion date" value="{{profileInfo.registrationDate}}" readonly>
+          </md-input-container>
+          <md-input-container class="p-full-width">
+            <input mdInput placeholder="Email" value="{{profileInfo.email}}" readonly>
+          </md-input-container>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div class="col-sm-8">
+      <md-card>
+        <md-card-content>
+          <md-tab-group>
+            <md-tab label="Update user info">
+              <md-divider></md-divider>
+              <md-card>
+                <form #mForm="ngForm">
+                  <md-card-content>
+                    <md-input-container class="p-full-width">
+                      <input mdInput disabled placeholder="Email" name="email" [(ngModel)]="profileInfoClone.email" #email="ngModel" id="email">
+                    </md-input-container>
+                    <md-input-container class="p-full-width">
+                      <input mdInput placeholder="Name" name="name" [(ngModel)]="profileInfoClone.name" #name="ngModel" id="name">
+                    </md-input-container>
+                    <md-input-container class="p-full-width">
+                      <input mdInput placeholder="Surname" name="surname" [(ngModel)]="profileInfoClone.surname" #surname="ngModel" id="surname">
+                    </md-input-container>
+                    <md-input-container class="p-full-width">
+                        <input type="password" mdInput placeholder="Password" name="password" [(ngModel)]="profileInfoClone.password" #password="ngModel" id="password">
+                      </md-input-container>
+                    <!-- <md-input-container class="p-full-width">
+                          <input mdInput placeholder="Phone" value="0899920509">
+                        </md-input-container> -->
+                    <!-- <md-radio-group value="more_options">
+                          <md-radio-button value="1">Male</md-radio-button>
+                          <md-radio-button value="2">Female</md-radio-button>
+                        </md-radio-group> -->
+                  </md-card-content>
+                  <md-card-actions align="end">
+                    <button color="primary" [disabled]="buttonLoading || (!mForm.form.valid)" md-button (click)="updateUser()">
+                            <i *ngIf="buttonLoading" class="fa fa-circle-o-notch fa-spin"></i> &nbsp;
+                          UPDATE</button>
+                  </md-card-actions>
+                </form>
+              </md-card>
+            </md-tab>
+            <!-- <md-tab label="Change password">
+              <md-card>
+                <md-card-content>
+                  <md-input-container class="p-full-width">
+                    <input mdInput placeholder="Enter password..." name="password" [(ngModel)]="profileInfoClone.password" #password="ngModel" id="password">
+                  </md-input-container>
+                  <md-input-container class="p-full-width">
+                    <input mdInput placeholder="Enter new password..." name="repassword" [(ngModel)]="profileInfoClone.repassword" #repassword="ngModel" id="repassword">
+                  </md-input-container>
+                  <md-input-container class="p-full-width">
+                    <input mdInput placeholder="Enter renew password...">
+                  </md-input-container>
+                </md-card-content>
+                <md-card-actions align="end">
+                  <button color="primary" md-button>UPDATE PASSWORD</button>
+                </md-card-actions>
+              </md-card>
+
+            </md-tab> -->
+          </md-tab-group>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</div>

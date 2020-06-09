@@ -1,0 +1,38 @@
+
+Step 1.
+	Install Electron & Electron Packager globally.
+
+	npm install -g electron
+	npm install -g  electron-packager
+
+Step 2.
+	Than run npm install.
+
+Step 3.
+	Modify index.html
+	Uncomment :
+	<script type="text/javascript">
+	    document.write("<base href='" + document.location.host + "' />");
+	  </script>
+
+	COMMENT:
+
+	 <base href="./">
+
+Step 4.
+	ng build
+
+Build For Electron Package.
+	Step 4.1
+		electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=win32 --out ./electron-app --overwrite
+
+electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=win32 --out ../testplayer_build/electron-app-win --overwrite
+electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=linux --out ../testplayer_build/electron-app-linux --overwrite
+electron-packager ./ TestPlayer --electron-version=2.0.2 --platform=win32 --out /data/eclettica/work/cini/sources/testplayer_build/electron-app-win --overwrite
+
+Run on Electron.
+	Step 4.1
+		electron .  --inspect main.js --enable-logging
+
+
+

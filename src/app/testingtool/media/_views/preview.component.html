@@ -1,0 +1,14 @@
+<div>
+  <div *ngIf="isLoading" style="width: 500px; padding: 20px;">
+    <md-progress-bar class="app-progress" mode="indeterminate"></md-progress-bar>
+  </div>
+  <img *ngIf="!!image && image.mediaType=='PHOTO'" [urlApi]="image.mediaPath" (done)="doneLoading($event)" width="450px" />
+   <vg-player>
+	    <video controls *ngIf="!!image && image.mediaType=='VIDEO'">
+	        <source src="{{url}}" type="video/mp4" >
+	    </video>
+  </vg-player>
+  <div class="preview-footer">
+    {{image.mediaName}}
+  </div>
+</div>

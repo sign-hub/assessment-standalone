@@ -1,0 +1,90 @@
+@import "../../share/theme.scss";
+.e-logo {
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    width: 65px;
+    height: 65px;
+    left: 305px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .middle {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .inner {
+        padding: 10px;
+        width: 100%;
+    }
+    .btnLogin {
+        width: auto;
+    }
+    .e-logo {
+        position: absolute;
+        top: 10px;
+        left: 40%;
+    }
+    .title-login {
+         text-align: center;
+         margin-top: 55px;
+    }
+}
+
+.btnLogin {
+  width: 150px;
+  border-radius: 0px;
+  box-shadow: 2px 3px 0px 0px #D3D3D3;
+  color: $color-link-e;
+}
+
+
+.title-login {
+    color: $color-title;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px 0px 30px 0px;
+    font-size: 20pt;
+}
+
+.btn-forget {
+    color: $color-link-e;
+    margin: 15px 0 15px 0;
+    font-size: 10pt;
+}
+
+.mat-card {
+    padding: 30px 60px 0px 60px;
+}
+
+.mat-card>.mat-card-actions:last-child {
+    margin-top: 50px;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    -moz-box-shadow: 0 0 15px #808080;
+    -webkit-box-shadow: 0 0 15px #808080;
+    box-shadow: 0 0 15px #808080;
+}
+
+.mat-input-element {
+    color: $color-primary;
+}
+
+.mat-input-underline .mat-input-ripple {
+    height: 3px;
+}
+
+.loginError {
+    color: $color-title;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.versionDiv {
+    color: #a6a6a6;
+    font-size: 13px;
+}

@@ -1,0 +1,10 @@
+@import "../../../share/theme.scss";
+
+/deep/.mat-dialog-container {
+    padding: 0px !important;
+}
+.preview-footer {
+  color: $color-white;
+  background-color: #404241;
+  padding: 10px;
+}

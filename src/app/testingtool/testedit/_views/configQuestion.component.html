@@ -1,0 +1,57 @@
+<div class="config-question-container">
+  <form #nForm="ngForm">
+    <div class="config-question-title">
+      Question edit
+    </div>
+    <div class="e-loading" *ngIf="isLoading">
+      <md-progress-bar mode="indeterminate"></md-progress-bar>
+    </div>
+    <div class="config-question-body">
+      <md-input-container class="p-full-width">
+        <input mdInput placeholder="Question name" name="name" [(ngModel)]="question.name" #name="ngModel" id="name">
+      </md-input-container>
+      <div class="lb-question">
+        Default transaction
+      </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="transition.time" (change)="changeCheckbox(transition,0)" name="time">Time
+        </md-checkbox>
+        <div class="input-time-control">
+          <input class="input-time" name="second" [(ngModel)]="transition.second" #second="ngModel" id="second" /> Sec
+        </div>
+      </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="transition.click" (change)="changeCheckbox(transition,1)" name="action">Click
+        </md-checkbox>
+      </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="transition.action" (change)="changeCheckbox(transition,2)" name="action">Action
+        </md-checkbox>
+      </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="transition.enter" (change)="changeCheckbox(transition,3)" name="enter">Enter
+        </md-checkbox>
+      </div>
+      <div class="lb-question">
+        Test randomization
+      </div>
+      <div class="input-time-control">
+          <input name="block" placeholder="Randomization Block" [(ngModel)]="question.options.randomizationBlock" #randomizationBlock="ngModel" id="randomizationBlock" />
+        </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="question.options.notRandomizeQuestion" (change)="changeRandomizeFlag($event)" name="notRandomizeQuestion">Not randomize 
+        </md-checkbox>
+      </div>
+    </div>
+    <div class="question-footer">
+      <button md-button color="primary" [disabled]="loadingUpdate" (click)="updateConfigQuestion()" class="btn-test">
+        <i *ngIf="!loadingUpdate" class="material-icons">&#xE161;</i>
+        <i *ngIf="loadingUpdate" class="fa fa-circle-o-notch fa-spin"></i>
+        <br/> Save
+      </button>
+      <button md-button color="primary" class="btn-test" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i>
+        <br/>Cancel
+      </button>
+    </div>
+  </form>
+</div>

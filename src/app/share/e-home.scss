@@ -1,0 +1,84 @@
+@import "./theme.scss";
+
+.mat-card {
+  padding: 0px;
+  border-radius: 0px;
+}
+
+
+.e-card {
+    position: absolute;
+    top: 70px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.card-title {
+  padding: 2px 5px 2px 5px;
+  background-color: $bg-card-title;
+  font-weight: bold;
+  color: $color-card-title;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  font-size: 14pt;
+}
+
+.mat-card-content {
+  padding: 0px;
+}
+
+.mat-button{
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .main-container {
+    background-color: $backgroud-e;
+    min-height: auto !important;
+    width: 100%;
+  }
+  .e-card {
+    width: 100%;
+    position: inherit;
+  }
+}
+
+.e-content {
+  overflow-y: auto;
+  height: 450px;
+}
+
+.e-content::-webkit-scrollbar-track{
+	background-color: #f2f2f2;
+}
+
+.e-content::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: #f2f2f2;
+}
+.e-content::-webkit-scrollbar-thumb
+{
+	background-color: #9d9d9d;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    -moz-box-shadow: 0 0 15px #808080;
+    -webkit-box-shadow: 0 0 15px #808080;
+    box-shadow: 0 0 15px #808080;
+}
+
+.slide-foo {
+  display: -webkit-flex;
+	display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+}
+.s-left{
+  position: relative;
+}
+.s-right{
+  position: relative;
+}

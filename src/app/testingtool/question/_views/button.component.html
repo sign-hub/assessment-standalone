@@ -1,0 +1,37 @@
+<div class="input-upload">
+    <form #nForm="ngForm">
+        <div class="input-title">
+            Button configuration
+        </div>
+        <div class="input-body">
+        <md-input-container class="p-full-width">
+                <input mdInput placeholder="Text" name="text" maxlength="20" [(ngModel)]="input.text" #name="ngModel" id="text">
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                    <input mdInput placeholder="Name" name="name" [(ngModel)]="input.name" #name="ngModel" id="name">
+                </md-input-container>
+            <select #selectElem (change)="selectStyle(selectElem.value)">
+                    <option [value]="'default'" [selected]="input.options.bstyle == 'default'"> default </option>
+                    <option [value]="'primary'" [selected]="input.options.bstyle == 'primary'"> primary </option>
+                    <option [value]="'success'" [selected]="input.options.bstyle == 'success'"> success </option>
+                    <option [value]="'info'" [selected]="input.options.bstyle == 'info'"> info </option>
+                    <option [value]="'warning'" [selected]="input.options.bstyle == 'warning'"> warning </option>
+                    <option [value]="'danger'" [selected]="input.options.bstyle == 'danger'"> danger </option>
+            </select>
+            <md-input-container class="p-full-width">
+                <input mdInput type="number" placeholder="Value" name="value" [(ngModel)]="input.value" #chars="ngModel" id="value">
+            </md-input-container>
+            <md-checkbox [checked]="input.transition" (change)="changeTransition()" name="transition">Transition</md-checkbox>
+            <md-input-container class="p-full-width">
+                <input mdInput type="number" placeholder="Width" name="dimWidth" [(ngModel)]="input.dimWidth" #dimWidth="ngModel" id="dimWidth">
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                <input mdInput type="number" placeholder="Height" name="dimHeight" [(ngModel)]="input.dimHeight" #dimHeight="ngModel" id="dimHeight">
+            </md-input-container>
+        </div>
+        <div class="input-footer">
+            <button md-button color="primary" (click)="save()"><i class="material-icons">&#xE161;</i> Save</button>
+            <button md-button color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> Cancel</button>
+        </div>
+    </form>
+</div>

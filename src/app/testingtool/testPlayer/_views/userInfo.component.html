@@ -1,0 +1,48 @@
+<md-dialog-content><div class="input-upload">
+    <form #nForm="ngForm">
+        <div class="input-title">
+            User Info
+        </div>
+        <div class="input-body">
+            <md-input-container class="p-full-width">
+                <label>Name*</label>
+                <input mdInput name="name" [(ngModel)]="input.name" #name="ngModel" id="name" required>
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                <label>Surname*</label>
+                <input mdInput name="surname" [(ngModel)]="input.surname" #surname="ngModel" id="surname" required>
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                <label>Id Partecipant*</label>
+                <input mdInput name="idPartecipant" [(ngModel)]="input.idPartecipant" #idPartecipant="ngModel"
+                    id="idPartecipant" required>
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                <label>Age*</label>
+                <input mdInput type="number" name="age" [(ngModel)]="input.age" #chars="ngModel" id="age" required>
+            </md-input-container>
+            <!--  <md-radio-group md-autofocus name="gender" [(ngModel)]="input.gender" class="p-full-width" required>
+                    <md-radio-button value="M" class="md-primary" (change)="onChange($event.value)">Male</md-radio-button>
+                    <md-radio-button value="F" (change)="onChange($event.value)"> Female </md-radio-button>
+            </md-radio-group> -->
+            <input type="radio" name="gender" value="M" [(ngModel)]="input.gender">Male
+            <input type="radio" name="gender" value="F" [(ngModel)]="input.gender">Female
+            <md-input-container class="p-full-width">
+                <label>Age of acquisition</label>
+                <input mdInput name="age_acq" type="number" min="0" [(ngModel)]="input.age_acq" #name="ngModel" id="age" required>
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                <label>Custom1</label>
+                <input mdInput name="custom1" [(ngModel)]="input.custom1" #name="ngModel" id="custom1" required>
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                <label>Custom2</label>
+                <input mdInput name="custom2" [(ngModel)]="input.custom2" #name="ngModel" id="custom2" required>
+            </md-input-container>
+        </div>
+        <div class="input-footer">
+            <button md-button color="primary" (click)="save()"><i class="material-icons">&#xE161;</i> Save</button>
+            <!--<button md-button color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> Cancel</button> -->
+        </div>
+    </form>
+</div></md-dialog-content>

@@ -1,0 +1,24 @@
+<div class="m-upload">
+    <form #nForm="ngForm">
+        <div class="d-title">
+            File upload
+        </div>
+        <!--<div class="d-body">
+            <input type="file" name='files' placeholder="pippo" [(ngModel)]='files' [ngModelOptions]="{standalone:true}" required ng2FileSelect multiple [uploader]="uploader" />
+        </div> -->
+
+        <div class="d-body">
+            <input type="file" name='ff' placeholder="pippo" multiple  required (change)="fileChange($event)" />
+        </div>
+        <div class="d-footer">
+            <button md-button color="primary" [disabled]="isUploading || uploader.isUploading || (!nForm.form.valid)" (click)="uploadAll()">
+                <i *ngIf="!isUploading && !uploader.isUploading" class="material-icons">&#xE2C6;</i>
+                <i *ngIf="isUploading || uploader.isUploading" class="fa fa-circle-o-notch fa-spin"></i>
+             Upload</button>
+            <button md-button color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> Cancel</button>
+        </div>
+        <div>
+            {{files}}
+        </div>
+    </form>
+</div>

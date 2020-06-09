@@ -1,0 +1,15 @@
+<div class="input-upload">
+    <form #nForm="ngForm">
+        <div class="input-title">
+            Video configuration
+        </div>
+        <div class="input-body">
+            <md-checkbox [checked]="autoplay" (change)="changeCheckable()" name="autoplay">Autoplay</md-checkbox>
+            <md-checkbox [checked]="commands" (change)="changeCommands()" name="commands">Show/Hide Commands</md-checkbox>
+        </div>
+        <div class="input-footer">
+            <button md-button color="primary" (click)="save()"><i class="material-icons">&#xE161;</i> Save</button>
+            <button md-button color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> Cancel</button>
+        </div>
+    </form>
+</div>

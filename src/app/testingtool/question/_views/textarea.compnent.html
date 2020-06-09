@@ -1,0 +1,23 @@
+<div class="input-upload">
+  <form #nForm="ngForm">
+    <div class="input-title">
+      Text area configuration
+    </div>
+    <div class="input-body">
+      <md-input-container class="p-full-width">
+        <input mdInput placeholder="Name" name="name" [(ngModel)]="input.name" #name="ngModel" id="name">
+      </md-input-container>
+      <md-input-container class="p-full-width">
+        <input mdInput type="number" placeholder="Rows" name="rows" [(ngModel)]="input.rows" #rows="ngModel" id="rows">
+      </md-input-container>
+      <md-input-container class="p-full-width">
+        <input mdInput type="number" placeholder="Cols" name="cols" [(ngModel)]="input.cols" #cols="ngModel" id="cols">
+      </md-input-container>
+      <md-checkbox name="transition">Transition</md-checkbox>
+    </div>
+    <div class="input-footer">
+      <button md-button color="primary" (click)="save()"><i class="material-icons">&#xE161;</i> Save</button>
+      <button md-button color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> Cancel</button>
+    </div>
+  </form>
+</div>

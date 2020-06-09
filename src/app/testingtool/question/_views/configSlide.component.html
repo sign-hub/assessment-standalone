@@ -1,0 +1,58 @@
+<div class="config-slide-container">
+  <form #nForm="ngForm">
+    <div class="config-slide-title">
+      Slide edit
+    </div>
+    <div class="e-loading" *ngIf="isLoading">
+      <md-progress-bar mode="indeterminate"></md-progress-bar>
+    </div>
+    <div class="config-slide-body">
+    <md-input-container class="p-full-width">
+        <input mdInput placeholder="Slide name" name="name" [(ngModel)]="slide.options.name" #name="ngModel" id="name" required>
+    </md-input-container>
+    <select #selectElem (change)="selectType(selectElem.value)">
+        <option *ngFor="let t of types" [value]="t" [selected]="slide.type == t">
+            {{t}}
+        </option>
+    </select>
+      <div class="lb-slide">
+        Default transaction
+      </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="transition.time" (change)="changeCheckbox(transition,0)" name="time">Time
+        </md-checkbox>
+        <div class="input-time-control">
+          <input class="input-time" name="second" [(ngModel)]="transition.second" #second="ngModel" id="second" />
+          <select placeholder="Sec" class="no-underline" #selectSecElem (change)="selectSeconds(selectSecElem.value)">
+            <option value="1" [selected]="selectedOption == '1'">Sec</option>
+            <option value="0" [selected]="selectedOption == '0'">MiliSec</option>
+          </select>
+        </div>
+      </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="transition.click" (change)="changeCheckbox(transition,1)" name="action">Click
+        </md-checkbox>
+      </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="transition.action" (change)="changeCheckbox(transition,2)" name="action">Action
+        </md-checkbox>
+      </div>
+      <div class="cb-time">
+        <md-checkbox [checked]="transition.enter" (change)="changeCheckbox(transition,3)" name="enter">Enter
+        </md-checkbox>
+      </div>
+      <input [(colorPicker)]="color" [style.background]="color" 
+      (colorPickerChange)="selectColor(color)"/>
+    </div>
+    <div class="slide-footer">
+      <button md-button color="primary" [disabled]="loadingUpdate" (click)="updateConfigSlide()" class="btn-test">
+        <i *ngIf="!loadingUpdate" class="material-icons">&#xE161;</i>
+        <i *ngIf="loadingUpdate" class="fa fa-circle-o-notch fa-spin"></i>
+        <br/> Save
+      </button>
+      <button md-button color="primary" class="btn-test" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i>
+        <br/>Cancel
+      </button>
+    </div>
+  </form>
+</div>

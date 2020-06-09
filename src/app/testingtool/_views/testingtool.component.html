@@ -1,0 +1,60 @@
+<nav class="navbar navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="assets/img/SH_logo.png" height="40px" alt="logo"/>
+      </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li  *ngIf="isOnline" class="l-menu" routerLinkActive="active">
+          <a class="nav-link" routerLink="/testdownload">{{'menu.testdownload' | translate}}
+          </a>
+        </li>
+        <li class="l-menu" routerLinkActive="active">
+          <a class="nav-link" routerLink="/testlist"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{'menu.test_list' | translate}}
+          </a>
+        </li>
+        <li class="l-menu" routerLinkActive="active"><a class="nav-link" routerLink="/report">{{'menu.report' | translate}}</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right"> 
+        <li class="dropdown" class="r-menu" style="margin-right: 20px;">
+            <i [ngStyle] = "{'color' : isOnline ? '#00b300' : 'red'}" class="material-icons">dns</i>
+        </li>
+        <li class="dropdown" class="r-menu">
+          <a class="dropdown-toggle nav-link" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="true">
+            Language
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right" style="min-width: 120px;" aria-labelledby="dropdownTranslation">
+            <li (click)="changeLang('en')"><a class="r-menu-drop">&nbsp;{{'translation.en' | translate}}</a></li>
+            <li (click)="changeLang('fr')"><a class="r-menu-drop">&nbsp;{{'translation.fr' | translate}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" class="r-menu">
+          <a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <img width="24" height="24" class="header-user-avatar" [src]="sanitaze(base_path+'/src/assets/img/profile-img.png')"
+          alt="profile-img">{{user.name}}
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+     <!--        <li><a routerLink="/home/profile" class="r-menu-drop"><i class="fa fa-user-circle-o" aria-hidden="true" ></i>&nbsp;{{'menu.profile' | translate}}</a></li>
+            <li><a class="r-menu-drop"><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;{{'menu.setting' | translate}}</a></li> -->
+            <!-- <li role="separator" class="divider"></li> -->
+            <li><a (click)="logout()" style="cursor:pointer;" class="r-menu-drop"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;{{'menu.logout' | translate}}</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,82 @@
+@import "../../../share/theme.scss";
+
+.e-loading {
+  padding: 5px;
+}
+
+.pro-test {
+  background-color: $bg-card-title;
+  padding: 10px 20px 20px 20px;
+  font-weight: 400;
+  color: #8c8c8c;
+}
+
+.test-action {
+  padding: 5px;
+}
+
+.test-action .material-icons {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.test-action-edit {
+  margin-right: 10px;
+}
+  
+.active{
+  color: #98e08a;
+}
+
+.container-question {
+  padding: 20px;
+}
+
+.card-question-new {
+  background-color: #43cef0;
+}
+
+.card-question-info {
+  background-color: #98e08a;
+  cursor: none;
+  .text-card-question {
+    top: 35%;
+  }
+}
+
+.card-question {
+  width: 180px;
+  height: 180px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+  margin: 15px;
+}
+
+.card-disabled {
+  pointer-events: none;
+  background-color: #dddddd;
+}
+
+.text-card-question {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.card-question-action {
+  width: 100px;
+  color: #ffffff;
+  padding: 5px;
+  text-align: center;
+  margin-left: 80px;
+}
+.card-question-action .material-icons {
+  font-size: 16px;
+}

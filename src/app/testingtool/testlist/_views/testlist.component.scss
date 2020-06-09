@@ -1,0 +1,69 @@
+@import "../../../share/theme.scss";
+.e-list {
+  padding: 8px;
+  color:  $color-card-title;
+  font-weight: 500 !important;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+.e-list:hover {
+  background-color: #caeffa;
+  cursor: pointer;
+  color: #44c6ee;
+  md-checkbox  {
+    /deep/.mat-checkbox-background {
+      background-color: #caeffa !important;
+    }
+    /deep/label {
+      font-weight: 600 !important;
+    }
+  }
+}
+.e-list label {
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+
+:host /deep/ md-checkbox {
+  .mat-checkbox-frame {
+    border-width: 0px;
+  }
+  .mat-checkbox-checkmark-path {
+    stroke: #00b2e6 !important;
+  }
+  .mat-checkbox-background {
+    background-color: white !important;
+    transition: none;
+  }
+  label {
+    font-weight: 400 !important;
+  }
+}
+
+.main-container {
+  background-color: $backgroud-e;
+}
+
+.e-footer {
+  text-align: center;
+  padding: 20px;
+}
+
+
+
+.material-icons {
+  font-size: 14px;
+}
+
+.mat-button:hover {
+  background: #00bde4;
+  color: $color-white;
+}
+
+.testdownload-overlay{
+  height: inherit;
+  width: 100%;
+  position: absolute;
+  display:inline-block;
+  background-color :rgba(128,128,128,0.6);
+}

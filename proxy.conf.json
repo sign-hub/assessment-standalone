@@ -1,0 +1,6 @@
+{
+  "/": {
+    "target": "http://testing01.eclettica.net:9000",
+    "secure": false
+  }
+}

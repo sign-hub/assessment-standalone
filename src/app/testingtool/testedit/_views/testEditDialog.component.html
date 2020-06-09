@@ -1,0 +1,38 @@
+<div class="d-test-editor">
+  <form #nForm="ngForm">
+    <div class="d-test-editor-title">
+      New test
+    </div>
+    <div class="d-test-editor-body">
+      <md-input-container class="input-100">
+        <input mdInput placeholder="Test name" name="TestName" [(ngModel)]="test.TestName"
+               #TestName="ngModel" id="TestName">
+      </md-input-container>
+      <div class="text">
+        <span class="lb-text">State: </span><span class="lb-value">{{test.state}}</span>
+      </div>
+      <div class="text">
+        <span class="lb-text">Date: </span><span class="lb-value">{{test.revId}}</span>
+      </div>
+      <div class="cb-options">
+        <div class="cb-option" *ngFor="let o of options; let i = index">
+          <md-checkbox name="value" [checked]="o.value" (change)="changeOption(o)" >{{o.name}}</md-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="d-test-editor-footer">
+      <button md-button color="primary" (click)="importQuestion()" class="btn-test"><i class="material-icons">&#xE0C3;</i><br/> Import question</button>
+      <button md-button color="primary" (click)="publishTest()" [disabled]="loading" class="btn-test">
+        <i *ngIf="!loading" class="material-icons">&#xE255;</i>
+        <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin"></i>
+        <br/> Publish
+      </button>
+      <button md-button color="primary" [disabled]="loadingUpdate" (click)="updateTest()" class="btn-test">
+        <i *ngIf="!loadingUpdate" class="material-icons">&#xE161;</i>
+        <i *ngIf="loadingUpdate" class="fa fa-circle-o-notch fa-spin"></i>
+        <br/> Save
+      </button>
+      <button md-button color="primary" class="btn-test" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> <br/>Cancel</button>
+    </div>
+  </form>
+</div>

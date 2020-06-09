@@ -1,0 +1,19 @@
+<div class="del-container">
+  <div class="del-title">
+    Test remove
+  </div>
+  <div class="del-body">
+    <div class="del-text">
+      Are you sure you want to permanently delete the selected test?
+      <div class="m-select"></div>
+    </div>
+  </div>
+  <div class="del-action">
+    <button md-button class="del-button" (click)="deleteTest()" color="primary" [disabled]="isLoading">
+      <i *ngIf="isLoading" class="fa fa-circle-o-notch fa-spin"></i>
+      <i *ngIf="!isLoading" class="material-icons">&#xE161;</i>
+      <br/>Remove</button>
+    <button md-button class="del-button" color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i><br/>Cancel
+    </button>
+  </div>
+</div>

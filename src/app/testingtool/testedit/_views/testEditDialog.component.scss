@@ -1,0 +1,74 @@
+@import "../../../share/theme.scss";
+
+.d-test-editor {
+  width: 500px;
+}
+
+.d-test-editor-title {
+  padding: 2px 5px 2px 5px;
+  background-color: $bg-card-title;
+  font-weight: bold;
+  color: $color-card-title;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+/deep/ .mat-dialog-container {
+  padding: 0px !important;
+  border-radius: 0px;
+}
+
+.input-100 {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.d-test-editor-body {
+  padding: 30px;
+}
+
+.d-test-editor-body .text {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+
+.d-test-editor-body .text .lb-value {
+  color: $color-primary;
+}
+
+.cb-options {
+  margin-top: 10px;
+}
+
+.cb-options .cb-option {
+  width: 100%;
+}
+
+.cb-options /deep/.mat-checkbox-inner-container {
+  height: 15px;
+  width: 15px;
+}
+
+.cb-options /deep/.mat-checkbox-label {
+  font-weight: normal !important;
+}
+
+.d-test-editor-footer {
+  margin-top: 30px;
+  text-align: center;
+  padding: 10px;
+}
+
+.btn-test {
+  line-height: 20px;
+  color: #8c8c8c;
+  font-weight: normal;
+  &:hover {
+    color: #ffffff;
+    background-color: $color-primary;
+  }
+}
+
+.btn-test /deep/.mat-button-wrapper {
+  font-weight: normal !important;
+}

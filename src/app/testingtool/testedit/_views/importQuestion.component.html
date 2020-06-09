@@ -1,0 +1,34 @@
+<div class="import-question-container">
+  <form #nForm="ngForm">
+    <div class="import-question-title">
+      Import Section
+    </div>
+    <div class="e-loading" *ngIf="isLoading">
+      <md-progress-bar mode="indeterminate"></md-progress-bar>
+    </div>
+    <div class="import-question-body">
+        <div class="e-list row" *ngFor="let e of testlist; let i = index" >
+                <div class="collapse-{{i}} col-md-4" (click)="collapse(e, i)">
+                  <i class="material-icons">&#xE145;</i>
+                </div>
+                <div class='col-md-8'>{{e.TestName}}</div>
+                <div id="demo-{{i}}" class="collapse-{{i}} col-md-12 questions-list" [hidden]='!e.collapsed'>
+                  <md-checkbox *ngFor="let q of e.quests; let j = index" (change)="chooseQuestion(q)" [(ngModel)]="q.selected" name="check-{{i}}-{{j}}" class='flexcontainer'>
+                    <div>{{q.name}}</div>
+                  </md-checkbox>
+              </div>
+            
+          </div>
+    </div>
+    <div class="question-footer import-question-footer">
+      <button md-button color="primary" [disabled]="loadingUpdate" (click)="importQuestion()" class="btn-test">
+        <i *ngIf="!loadingUpdate" class="material-icons">&#xE161;</i>
+        <i *ngIf="loadingUpdate" class="fa fa-circle-o-notch fa-spin"></i>
+        <br/> Save
+      </button>
+      <button md-button color="primary" class="btn-test" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i>
+        <br/>Cancel
+      </button>
+    </div>
+  </form>
+</div>

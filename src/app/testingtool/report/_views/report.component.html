@@ -1,0 +1,52 @@
+<div class="main-container" [ngStyle]="{'min-height': wHeight}">
+    <div class="e-card">
+      <md-card>
+        <div class="card-title">
+        <span style="margin-right:50px;">Report list</span>
+          <md-input-container>
+            <input mdInput placeholder="Test name" name="filter_name" [(ngModel)]="filter_name" #name="ngModel" id="filter_name">
+          </md-input-container>
+          <button md-button class="m-btn-filter" (click)="doFilter()"><i class="material-icons m-icon-filter">&#xE152;</i></button>
+          <div style="display: inline; /* width: 48%; */ margin-top: 20px; position: absolute; margin-left: 40px;"> 
+            <my-date-picker style="width: 50% !important" name="mydate" [options]="myDatePickerOptions" [(ngModel)]="fileter_date" (dateChanged)="doFilter($event)"></my-date-picker>
+          </div>
+        </div>
+        <md-card-content>
+          <div class="e-content">
+            <div style="width: 100%;" *ngIf="loading">
+              <md-progress-bar class="app-progress" mode="indeterminate"></md-progress-bar>
+            </div>
+          <div *ngIf="loading" class="report-overlay"></div>
+            <table class="table table-striped a-table-hover" id="tbAdmin">
+                <thead>
+                <tr>
+                  <th>{{'report.table.testname' | translate}}</th>
+                  <th>{{'report.table.id' | translate}}</th>
+                  <th>{{'report.table.user' | translate}}</th>
+                  <th>{{'report.table.date' | translate}}</th>
+                  <th>{{'report.table.synced' | translate}}</th>
+                  <th>{{'report.table.action' | translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngIf="loading">
+                  <td colspan="5">
+                    <md-progress-bar class="app-progress" mode="indeterminate"></md-progress-bar>
+                  </td>
+                </tr>
+                <tr *ngFor="let e of reports; let i = index">
+                  <td>{{e.testName}}</td>
+                  <td>{{e._id}}</td>
+                  <td>{{e.userInfo.name + ' ' + e.userInfo.surname}}</td>
+                  <td>{{getDate(e.testEndTime)}}</td>
+                  <td><i *ngIf="!e.synced" class="material-icons">cloud_upload</i><i *ngIf="e.synced" class="material-icons">cloud_done</i></td>
+                  <td><button *ngIf="!e.synced && isOnline" style="margin-right:10px;"  (click)="upload(e)">Upload</button><button (click)="deleteReport(e)">Delete</button></td>
+                </tr>
+                </tbody>
+              </table>
+          </div>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+  

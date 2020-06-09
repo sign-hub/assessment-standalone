@@ -1,0 +1,132 @@
+<!--<div class="slide-head" [ngStyle]="{'min-height': hieghtQuestion}">-->
+<div class="slide-head">
+  <!--<div class="s-left" [ngStyle]="{'min-height': hieghtQuestion}">
+        <button *ngIf="test != undefined && test != null && test.options != undefined && test.options != null && test.options.changeable == 'true' && !(currentQuestionIndex<0 && currentSlideIndex<=0)" class="btn btn-success"
+        >Back</button>
+      </div> -->
+  <md-card *ngIf="mediaNotDownloaded" class="attention">
+    <md-card-title>
+      <i class="material-icons">
+        warning
+      </i>
+      <span> ATTENTION!</span>
+    </md-card-title>
+    <md-card-content>
+      Medias not have not been downloaded completely. Please wait till they download or download test again
+    </md-card-content>
+  </md-card>
+  <div class="s-center" [ngStyle]="{'height': heightQuestionCenter, 'width':widthQuestionCenter}">
+    <div class="s-title">
+      <span class="pull-right" (click)="closePlayer()" style="cursor:pointer;"><i class="material-icons">close</i></span>
+    </div>
+    <div class="s-content" id="s-content" [ngStyle]="{'height': heightQuestionCenterContent, 'background-color' : backgroundColor}">
+      <div [ngStyle]="{'height': heightQuestionCenterContent}">
+        <div *ngFor="let c of currentComponents; let i = index; trackBy: trackByFn">
+          <div class="c-item" [ngClass]="{'is-click-area' : (c.componentType == 'CLICK_AREA') || (c.componentType == 'CUSTOM_CLICK_AREA') }"
+            [ngSwitch]="c.componentType"
+            [ngStyle]="{'top': c.posY + 'px', 'left': c.posX + 'px', 'width': c.dimWidth +'px', 'height': c.dimHeight + 'px', 'position' : 'absolute'}">
+            <!--<i class="material-icons" (click)="configComponentModal(c)">&#xE8B8;</i>
+            <i class="material-icons" (click)="removeComponent(i)">&#xE5CD;</i>-->
+            <!--<br/>-->
+            <label *ngIf="c.label && c.componentType!='CHECKBOX'">{{c.label}}</label>
+            <input id="{{c.id}}" *ngSwitchCase="'TEXT'" [attr.maxlength]="c.chars" [ngStyle]="{'height':c.dimHeight+'px', 'width': c.dimWidth +'px'}"
+              type="text" name="{{c.name}}" (keypress)="textChange(c);checkTransition(c, $event)">
+
+            <textarea id="{{c.id}}" *ngSwitchCase="'TEXTAREA'" [attr.cols]="c.cols" [attr.rows]="c.rows"
+              [ngStyle]="{'height':c.dimHeight+'px', 'width': c.dimWidth +'px'}" type="text" name="{{c.name}}"
+              (keypress)="textAreaChange(c, $event);checkTransition(c, $event)"></textarea>
+
+            <div id="{{c.id}}" *ngSwitchCase="'RADIO'">
+              <div *ngFor="let r of c.radioComponent; let y = index">
+                <input class="class-radio" id="{{c.id}}_{{y}}" value="{{c.value}}" style="width: 30px;" type="radio" name="{{c.groupName}}"
+                  (click)="radioChange(c, r);checkTransition(c, $event)">
+                <label for="{{c.id}}_{{y}}">{{r.label}}</label><br>
+              </div>
+            </div>
+            <div *ngSwitchCase="'CHECKBOX'">
+              <input id="{{c.id}}" style="height: 15px !important; width: 15px !important;" type="checkbox" value="{{c.value}}" name="{{c.groupName}}"
+                (click)="checkboxChange(c);checkTransition(c, $event)">
+              <label for="{{c.id}}">{{c.label}}</label>
+            </div>
+
+            <div *ngSwitchCase="'RANGE'" class='rangecontainer' id="{{c.id}}">
+              <input *ngIf="!!c.name" name="{{c.name}}" type="range" min='{{c.min}}' max='{{c.max}}' step='{{c.step}}'
+                [attr.list]="c.options?.showticks==true || c.options?.showticks=='true' ? 'tickmarks':''"
+                [ngStyle]="{'width': c.dimWidth +'px', 'height': c.dimHeight + 'px'}" (change)="rangeChange(c,$event)" />
+              <ul class='rangelabel' *ngIf="c.options?.showlabels==true || c.options?.showlabels=='true'">
+                <li *ngFor="let v of getLabels(c)">{{v.label}}</li>
+              </ul>
+              <datalist id="tickmarks" *ngIf="c.options?.showticks==true || c.options?.showticks=='true'">
+                <option *ngFor="let v of getTicks(c)" value="{{v.value}}">
+              </datalist>
+            </div>
+
+            <div *ngSwitchCase="'IMAGE'" class="e-image" [ngClass]="{'selected': c.options.isChecked && c.options.shadow == 'true'}">
+              <img [src]="sanitizeImg(getMedia(c))" [ngStyle]="{'width': c.dimWidth +'px', 'height': c.dimHeight + 'px'}" id="{{c.id}}"
+                (click)="setActiveImg(i);imageChange(c);checkTransition(c, $event)" />
+            </div>
+            <div *ngSwitchCase="'VIDEO'" class="e-image">
+              <vg-player *ngIf="c.options.commands=='true'" (onPlayerReady)="onPlayerReady($event, c.id, c)">
+                <video [vgMedia]="media" #media id="{{c.id}}" preload="auto" controls
+                  [ngStyle]="{'width': c.dimWidth +'px', 'height': c.dimHeight + 'px'}">
+                  <source [src]="sanitize(getMedia(c))" type="video/mp4">
+                </video>
+              </vg-player>
+              <vg-player *ngIf="c.options.commands!='true'" (onPlayerReady)="onPlayerReady($event, c.id, c)">
+                <video [vgMedia]="media" #media id="{{c.id}}" preload="auto" [ngStyle]="{'width': c.dimWidth +'px', 'height': c.dimHeight + 'px'}">
+                  <source [src]="sanitize(getMedia(c))" type="video/mp4">
+                </video>
+              </vg-player>
+            </div>
+            <div *ngSwitchCase="'VIDEO_RECORD'">
+              <div class="video-record-area" (click)="startRecording(c)" id="{{c.id}}" [ngStyle]="{'width': c.dimWidth, 'height': c.dimHeight}">
+                <img style="height: 80px" src="assets/img/video-camera-icon.png" alt="assets/img/video-camera-icon.png">
+              </div>
+            </div>
+            <div *ngSwitchCase="'CLICK_AREA'" class="e-clickarea">
+              <div id="{{c.id}}" (click)="clickareaChange(c);checkTransition(c, $event)"
+                [ngStyle]="{'width': c.dimWidth +'px', 'height': c.dimHeight + 'px', 'z-index': '5'}"></div>
+            </div>
+            <div *ngSwitchCase="'CUSTOM_CLICK_AREA'" id="{{c.id}}_{{i}}" class="e-clickarea"
+              [ngStyle]="{'width': c.dimWidth, 'height': c.dimHeight, 'z-index': '999'}">
+              <svg (click)="clickareaChange(c);checkTransition(c, $event)" *ngIf="c.options" [attr.width]="c.dimWidth" [attr.height]="c.dimHeight"
+                [attr.viewBox]="c.options.viewBox" xml:space="preserve">
+                <!-- <line *ngFor="let line of linesArray" [attr.x1]="line.x1" [attr.y1]="line.y1" [attr.x2]="line.x2" [attr.y2]="line.y2" style="stroke:rgb(0,0,0);stroke-width:2" /> -->
+                <polygon [attr.points]="c.options.points" class="e-clicksvg" />
+              </svg>
+            </div>
+            <div *ngSwitchCase="'TEXTBLOCK'">
+              <div [froalaView]="c.text" id="{{c.id}}"
+                [ngStyle]="{'width': c.dimWidth +'px', 'height': c.dimHeight + 'px', 'color' : c.options.color, 'font-size' : c.options.fsize+'px'}">
+              </div>
+            </div>
+            <button *ngSwitchCase="'BUTTON'" class="btn btn-{{c.options.bstyle}}" (click)="checkbuttonChange(c); checkTransition(c, $event)"
+              [ngStyle]="{'width': c.dimWidth +'px', 'height': c.dimHeight + 'px'}">{{c.text}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="slide-foo">
+  <div class="f-left">
+    <div class="new-question" style="cursor: pointer;" (click)="backQuestion()">
+      <img src="assets/img/new-question-icon.PNG" alt="question" width="40px" height="10px"> TEST
+    </div>
+  </div>
+  <div class="f-center">
+    <div *ngFor="let s of currentQuestion.slides; let i = index">
+      <div class="question-info"  [ngClass]="{'selected': s.slideId == currentSlideId}">    
+        <br/> {{s.type}}
+      </div>
+      <div class="sperator-right">
+        <i class="material-icons">&#xE037;</i>
+      </div>
+    </div>
+
+  </div>
+  <div class="f-right">
+  </div>
+</div>
+-->

@@ -1,0 +1,37 @@
+<div class="main-container" [ngStyle]="{'min-height': wHeight}">
+  <div class="e-card">
+    <md-card>
+      <div class="card-title">
+        <span style="margin-right:50px;">Test Download List</span>
+        <md-input-container>
+          <input mdInput placeholder="Test name" name="filter_name" [(ngModel)]="filter_name" #name="ngModel" id="filter_name">
+        </md-input-container>
+        <button md-button class="m-btn-filter" (click)="doFilter()"><i class="material-icons m-icon-filter">&#xE152;</i></button>
+      </div>
+      <md-card-content>
+        <div class="e-content">
+          <div *ngIf="loading" style="width: 100%;">
+            <md-progress-bar class="app-progress" mode="indeterminate"></md-progress-bar>
+          </div>
+          <div *ngIf="loading" class="testdownload-overlay"></div>
+          <div class="e-list" *ngFor="let e of data; let i = index">
+            <md-checkbox *ngIf="!e.is_downloaded" [(ngModel)]="e.checked" name="check" (change)="chooseTest(e,i)">{{e.TestName}}</md-checkbox>
+            <div *ngIf="!!e.is_downloaded"><i class="material-icons" style="margin-left: 3px;margin-right: 10px;">check_circle</i>{{e.TestName}} <button (click)="deleteTest(e,i)" class="pull-right">Delete</button></div>
+          </div>  
+        </div>
+      </md-card-content>
+    </md-card>
+    <div class="e-footer">
+      <button md-button color="primary" (click)="downloadTest()" mdTooltip="{{'tooltip.actions.testing_tool.testlist.view' | translate }}"><i class="material-icons" style="font-size: 22px;">cloud_download</i> Download</button>
+      <!-- <button md-button (click)="editTest()" [disabled]="!isEdit" color="primary"  mdTooltip="{{'tooltip.actions.testing_tool.testlist.edit' | translate }}" ><i class="material-icons">border_color</i> Edit</button> -->
+      <!-- <button md-button color="primary" (click)="cloneTest()" [disabled]="isLoading"  mdTooltip="{{'tooltip.actions.testing_tool.testlist.clone' | translate }}" >
+        <i *ngIf="isLoading" class="fa fa-circle-o-notch fa-spin"></i>
+        <i *ngIf="!isLoading" class="material-icons">filter_none</i>
+        Clone
+      </button> -->
+      <!-- <button *ngIf="isRemove" md-button color="primary" [disabled]="!isRemove" (click)="deleteTest()"  mdTooltip="{{'tooltip.actions.testing_tool.testlist.remove' | translate }}" ><i class="material-icons">&#xE872;</i> Remove</button> -->
+    </div>
+<!--     <a *ngIf="!!downloadUrl" href="{{downloadUrl}}" id="downloadElement" target="_self" download>Download on spa</a>
+    <button (click)="dldUrl()" >DOWNLOAD</button> -->
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="outer">
+  <div class="middle">
+    <form class="inner" #mForm="ngForm">
+      <md-card>
+        <md-card-title>
+          <img class="e-logo" src="assets/img/logo.png" alt="logo" />
+          <h2 class="title-login">{{'login.title' | translate}}</h2>
+        </md-card-title>
+        <md-card-content>
+          <div class="loginError" *ngIf="isError">Login failed, Username or password incorrect!</div>
+          <md-input-container class="p-full-width">
+            <input mdInput placeholder="{{'login.username' | translate}}" type="text" required name="login" [(ngModel)]="authen.login" #login="ngModel" id="login">
+            <md-error *ngIf="(login.errors && (login.dirty || login.touched))">
+             {{'login.validate.username' | translate}}
+            </md-error>
+          </md-input-container>
+          <md-input-container class="p-full-width">
+            <input type="password" required mdInput placeholder="{{'login.password' | translate}}" name="password" [(ngModel)]="authen.password" #password="ngModel" id="password">
+            <md-error *ngIf="(password.errors && (password.dirty || password.touched))">
+              {{'login.validate.password' | translate}}
+            </md-error>
+          </md-input-container>
+          <md-checkbox>{{'login.remember' | translate}}</md-checkbox>
+        </md-card-content>
+        <md-card-actions align='center'>
+          <button type="submit" [disabled]="buttonLoading || (!mForm.form.valid)" md-raised-button class="btnLogin"  (keyup.enter)="doLogin()" (click)="doLogin()"><i *ngIf="buttonLoading" class="fa fa-circle-o-notch fa-spin"></i> {{'login.enter' | translate}} </button>          <br/>
+          <button *ngIf="!!online" type="button" class="btn btn-link btn-forget" (click)="forgetPassword()">{{'login.forget' | translate}}</button>
+          <div *ngIf="!online" style="height: 30px;"></div>
+          <div class="versionDiv">version: {{version}}</div>
+          <div class="versionDiv">endpoint: {{endpoint}}</div>
+        </md-card-actions>
+      </md-card>
+    </form>
+  </div>
+</div>

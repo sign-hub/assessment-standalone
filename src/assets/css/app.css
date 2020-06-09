@@ -1,0 +1,261 @@
+/*Include Font*/
+@font-face {
+  font-family: 'handshape2002';
+  src: url('../handshape-font/handshape2002-dec.TTF')  format('truetype'); 
+}
+
+body {
+    overflow:hidden;
+}
+.mat-figure <#result{
+    justify-content:left;
+}
+/*.ui-resizable-se {
+  right: 10px;
+  bottom: 20px;
+}*/
+
+.e-clickarea .ui-resizable-se {
+  right: 0px;
+  bottom: 0px;
+}
+
+.ui-resizable-se {
+  right: 14px;
+  bottom: 24px;
+}
+
+.e-image .ui-resizable-se,
+.e-textblock .ui-resizable-se,
+.rangecontainer .ui-resizable-se {
+  right: 0px;
+  bottom: 0px;
+}
+
+.e-image {
+  z-index: -1;
+}
+
+.fr-wrapper > div {
+  display: none;
+  /*position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;*/
+}
+.fr-wrapper > div.fr-element {
+  display: block;
+}
+
+fra {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  color: #777;
+  cursor: help;
+}
+
+.flexcontainer {
+  display: flex;
+}
+
+.flexcontainer label {
+  width: 100%;
+  display: block;
+}
+
+.flexcontainer .mat-checkbox-inner-container{
+  float: left;
+}
+.mat-input-flex{
+  display: block;
+}
+.mat-input-infix{
+  width:inherit;
+}
+
+.ruler {
+    background: rgba(255,255,255,1);
+    color: #444;
+    font-family: source code pro, "Arial Narrow", "Helvetica Neue", Helvetica, Arial, Veranda, sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    display: inline-block !important;
+}
+.ruler > div {
+    background: #444;
+}
+.hRule {
+    position: relative;
+    width: 100%;
+    height: 18px;
+    left: 0px;
+    top: 0px;
+    min-width: 1000px;
+    border-bottom: 1px solid;
+    z-index: 9;
+    display: inline-block !important;
+
+}
+
+ .grammar_test .fr-box.fr-basic.fr-top .fr-wrapper{
+  overflow: hidden !important;
+ }
+.grammar_test .fr-box.fr-basic .fr-element {
+    padding-left: 25px !important;
+    overflow-y: scroll;
+    height: 500px;
+    padding-bottom: 20px;
+}
+.vRule {
+    position: absolute;
+    min-height: 500px;
+    width: 18px;
+    left: 0px;
+    top: 0px;
+    border-right: 1px solid;
+    z-index: 9;
+    display: inline-block !important;
+}
+.corner {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 18px;
+    height: 18px;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    z-index: 10;
+    display: inline-block !important;
+}
+.hRule .tickLabel {
+    position: absolute;
+    top: 0px;
+    width: 1px;
+    height: 100%;
+    text-indent: 1px;
+}
+.hRule .tickMajor {
+    position: absolute;
+    bottom: 0px;
+    width: 1px;
+    height: 6px;
+}
+.hRule .tickMinor {
+    position: absolute;
+    bottom: 0px;
+    width: 1px;
+    height: 4px;
+}
+.vRule .tickLabel {
+    position: absolute;
+    right: 0px;
+    height: 1px;
+    width: 100%;
+    text-indent: 1px;
+}
+.vRule .tickLabel span {
+    display: block;
+    position: absolute;
+    
+    top: 1px;
+    right: 0px;
+    margin-right: 18px;
+    
+    -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+    
+    -webkit-transform-origin: top right;
+  -moz-transform-origin: top right;
+  -ms-transform-origin: top right;
+  -o-transform-origin: top right;
+  transform-origin: top right;
+    
+}
+.vRule .tickMajor {
+    position: absolute;
+    right: 0px;
+    height: 1px;
+    width: 6px;
+}
+.vRule .tickMinor {
+    position: absolute;
+    right: 0px;
+    height: 1px;
+    width: 4px;
+}
+
+.vMouse {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 0px;
+    
+    left: 0;
+    background: rgba(0,0,0,0);
+    border-bottom: 1px dotted;
+    z-index: 11;
+}
+.hMouse {
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 0px;
+    top: 0;
+
+    background: rgba(0,0,0,0);
+    border-left: 1px dotted;
+    z-index: 11;
+}
+.mousePosBox {
+    height: 16px;
+    background: rgba(0,0,0,0.25);
+    color: #fff;
+    font-family: source code pro;
+    font-size: 12px;
+    line-height: 16px;
+    border: 1px solid rgba(0,0,0,0.5);
+    position: fixed;
+    left: -50%;
+    top: -50%;
+    padding: 0 2px;
+}
+
+.ui-wrapper {
+  /*width: inherit !important;*/
+  /*height: inherit !important;*/
+}
+
+.mat-list-item-content{
+  height: inherit !important;
+}
+div.overline {
+    text-decoration: overline;
+}
+
+div.smallcaps{
+  font-variant: small-caps !important;
+}
+
+.fr-popup{
+  max-height: 300px;
+  overflow-y: scroll; 
+}
+.streaming-tool-list{
+  display: inline-block;
+  width: 100%;
+}
+
+.streaming-tool-list > .mat-list-item{
+  width: 100%;
+  display: inline-block;
+}
+
+

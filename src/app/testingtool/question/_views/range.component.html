@@ -1,0 +1,45 @@
+<div class="input-upload">
+    <form #nForm="ngForm">
+        <div class="input-title">
+            Range slider configuration
+        </div>
+        <div class="input-body">
+            <md-input-container class="p-full-width">
+                <input mdInput placeholder="Name" name="name" [(ngModel)]="input.name" #name="ngModel" id="name">
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                    <input mdInput placeholder="Label" name="label" [(ngModel)]="input.label" #name="ngModel" id="label">
+                </md-input-container>
+            <md-input-container class="p-full-width">
+                <input mdInput type="number" placeholder="Min" name="min" [(ngModel)]="input.min" #min="ngModel" id="min">
+            </md-input-container>
+            <md-input-container class="p-full-width">
+                    <input mdInput type="number" placeholder="Max" name="max" [(ngModel)]="input.max" #max="ngModel" id="max">
+                </md-input-container>
+            <md-input-container class="p-full-width">
+                    <input mdInput type="number" placeholder="Step" name="step" [(ngModel)]="input.step" #step="ngModel" id="step">
+                </md-input-container>
+            <md-checkbox [checked]="input.options.showticks==true" (change)="changeShowTicks()" name="showticks">Show Ticks</md-checkbox>
+            <md-checkbox [checked]="input.options.showlabels==true" (change)="changeShowLabels()" name="showlabels">Show Labels</md-checkbox>
+            <div class="p-full-width addLabels" *ngIf="addLabel">
+                    <md-input-container class="p-full-width">
+                        <input mdInput placeholder="Label" name="lab" [(ngModel)]="new.label" #name="ngModel" id="newlabel">
+                    </md-input-container>
+                    <!--<md-checkbox [checked]="new.isCorrect" (change)="changeIsCorrect()" name="isCorrect">Is Correct</md-checkbox>-->                
+                    <button md-button color="primary" (click)="addLabel=false;addNewLabel()">Add</button>
+            </div>
+            <div class='labelcontainer'>
+                <div *ngFor="let r of labels; let i = index">
+                        <span>{{r.label}}
+                        </span>
+                        <button md-button color="primary" (click)="deleteLabel(i)"><i class="material-icons">&#xE872;</i> Remove</button>
+                </div>
+            </div>
+            <button md-button color="primary" (click)="addLabel=true">Add Label</button>
+        </div>
+        <div class="input-footer">
+            <button md-button color="primary" (click)="save()"><i class="material-icons">&#xE161;</i> Save</button>
+            <button md-button color="primary" [md-dialog-close]="true"><i class="material-icons">&#xE5CD;</i> Cancel</button>
+        </div>
+    </form>
+</div>
