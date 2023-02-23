@@ -57,7 +57,7 @@
     "recordrtc": "^5.5.4",
     "restler-base": "github:eclettica/restler-base",
     "rxjs": "^5.1.0",
-    "sequelize": "^4.37.10",
+    "sequelize": "^6.28.2",
     "sqlite3": "^4.0.0",
     "videogular2": "^5.6.1",
     "zone.js": "^0.8.4"
